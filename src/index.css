@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.no-border-textarea  {
+    border: none !important;
+}
+
+.no-border-textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+:where(.css-dev-only-do-not-override-f4j4ic).ant-spin .ant-spin-dot-holder {
+    color: #15803d !important;
+}
