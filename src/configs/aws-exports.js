@@ -1,5 +1,5 @@
 
-console.log(process.env)
+console.log(process ? process : "hi")
 const awsmobile = {
     "aws_project_region": "eu-west-1",
     "aws_cognito_identity_pool_id": "eu-west-1:ab9cded3-0eda-49ec-8fca-9b956a50bb6f",
