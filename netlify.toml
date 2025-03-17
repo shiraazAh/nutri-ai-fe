@@ -1,2 +1,0 @@
-[build]
-  command = "REACT_APP_COGNITO_POOL=$COGNITO_POOL REACT_APP_WEB_CLIENT=$WEB_CLIENT npm run build"
