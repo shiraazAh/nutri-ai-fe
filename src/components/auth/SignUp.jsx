@@ -92,11 +92,11 @@ function SignUp() {
       <Form.Item
         name="username"
         rules={[
-          { required: true, message: "Please input your username!" },
-          { min: 3, message: "Username must be at least 3 characters long" },
+          { required: true, message: "Please input your name!" },
+          { min: 3, message: "name must be at least 3 characters long" },
         ]}
       >
-        <Input prefix={<UserOutlined />} placeholder="Username" size="large" />
+        <Input prefix={<UserOutlined />} placeholder="Name" size="large" />
       </Form.Item>
 
       <Form.Item
