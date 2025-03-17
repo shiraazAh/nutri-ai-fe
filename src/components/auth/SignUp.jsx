@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { signUp, confirmSignUp } from "aws-amplify/auth";
 import { useNavigate, Link } from "react-router-dom";
-import { Form, Input, Button, Alert, Card, Typography, Space } from "antd";
+import {
+  Form,
+  Input,
+  Button,
+  Alert,
+  Card,
+  Typography,
+  Space,
+  message,
+} from "antd";
 import {
   UserOutlined,
   LockOutlined,
@@ -64,7 +73,10 @@ function SignUp() {
     setLoading(true);
     setError("");
     try {
-      await confirmSignUp({ username: email, confirmationCode: values.code});
+      await confirmSignUp({ username: email, confirmationCode: values.code });
+              message.success(
+                "You have successfully created your account, please sign in to continue"
+              );
       navigate("/signin");
     } catch (error) {
       setError(error.message || "An error occurred during verification");
@@ -197,33 +209,33 @@ function SignUp() {
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
-      <Card className="w-full max-w-md shadow-lg">
-        <Title level={2} className="text-center mb-8">
-          {step === "signup" ? "Create your account" : "Verify your account"}
-        </Title>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+        <Card className="w-full max-w-md shadow-lg">
+          <Title level={2} className="text-center mb-8">
+            {step === "signup" ? "Create your account" : "Verify your account"}
+          </Title>
 
-        {error && (
-          <Alert
-            message="Error"
-            description={error}
-            type="error"
-            showIcon
-            className="mb-6"
-            closable
-            onClose={() => setError("")}
-          />
-        )}
+          {error && (
+            <Alert
+              message="Error"
+              description={error}
+              type="error"
+              showIcon
+              className="mb-6"
+              closable
+              onClose={() => setError("")}
+            />
+          )}
 
-        {step === "signup" ? signUpForm : confirmationForm}
+          {step === "signup" ? signUpForm : confirmationForm}
 
-        <div className="text-center mt-4">
-          <Link to="/signin" className="text-green-700 hover:text-green-600">
-            Already have an account? Sign in
-          </Link>
-        </div>
-      </Card>
-    </div>
+          <div className="text-center mt-4">
+            <Link to="/signin" className="text-green-700 hover:text-green-600">
+              Already have an account? Sign in
+            </Link>
+          </div>
+        </Card>
+      </div>
   );
 }
 
